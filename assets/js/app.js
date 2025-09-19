@@ -47,7 +47,7 @@
       date: "02 Luglio 2025",
       desc: "Piccolo aggiornamento dall’isola: eventi del weekend, qualità della vita e anteprima delle prossime attività!",
       image: "images/news/hello.jpg",
-      link: "/news/hello"
+      link: "pages/news/test"
     },
     {
       title: "Nuovo Evento 🎉",
@@ -55,7 +55,7 @@
       date: "15 Luglio 2025",
       desc: "Unisciti a noi per un evento speciale con ricompense uniche e tanto divertimento.",
       image: "images/news/evento.jpg",
-      link: "/news/evento"
+      link: "pages/news/test"
     },
     {
       title: "Aggiornamento 🌴",
@@ -63,7 +63,7 @@
       date: "25 Luglio 2025",
       desc: "Nuove feature, bugfix e miglioramenti alla stabilità del server.",
       image: "images/news/update.jpg",
-      link: "/news/update"
+      link: "pages/news/test"
     }
   ];
 
@@ -217,3 +217,4 @@ document.getElementById('year').textContent = new Date().getFullYear();
     }
   });
 })();
+
