@@ -1,0 +1,104 @@
+/* Base + typography */
+html { scroll-behavior: smooth; font-size: 150%; }
+body { font-family: 'Paytone One', sans-serif; }
+
+@media (max-width: 1024px) { html { font-size: 125%; } }
+@media (max-width: 640px)  { html { font-size: 112.5%; } }
+
+/* Loader */
+#loader { transition: opacity .3s ease; }
+#loader.hide { opacity: 0; pointer-events: none; }
+
+
+
+
+.dot{
+  width:10px; height:10px; border-radius:9999px;
+  display:inline-block; background:#F9EBD0;
+  opacity:.5; transform: translateY(0);
+  animation: dotPulse .9s ease-in-out infinite;
+}
+.dot-2 { animation-delay: .15s; }
+.dot-3 { animation-delay: .30s; }
+
+@keyframes dotPulse{
+  0%,100%{ transform: translateY(0); opacity:.5; }
+  50%{ transform: translateY(-6px); opacity:1; }
+}
+
+/* Hero background */
+.hero-bg{
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Badges */
+.badge-coming-soon{ background-color:#ee6055; color:#fff; }
+
+/* About dropdown */
+.about-dropdown{
+  position:absolute; left:50%; transform:translateX(-50%);
+  top:100%; margin-top:.5rem; z-index:50;
+  visibility:hidden; opacity:0; translate: 0 0.5rem;
+  transition: all .2s;
+  border-radius: 1rem;
+  background:#fff; color:#0f172a; /* slate-800 */
+  box-shadow: 0 10px 25px rgba(0,0,0,.12);
+  outline: 1px solid rgba(0,0,0,.05);
+  min-width: 640px;
+}
+.group:hover .about-dropdown{
+  visibility:visible; opacity:1; translate: 0 0;
+}
+.about-dropdown-arrow{
+  position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+  width:18px; height:10px;
+  background:#fff;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  box-shadow: 0 -1px 0 rgba(0,0,0,.06); /* accenna il “bordo” */
+}
+
+/* Coming soon panel gradient */
+.comingsoon-panel{
+  background:
+    linear-gradient(180deg,#C97A4A 0%,#B6683D 100%),
+    radial-gradient(120% 80% at 50% 0%,#D68856 0%,transparent 60%);
+}
+
+/* Polaroid card */
+.polaroid{
+  position:relative; display:inline-block;
+  border-radius:22px; background:#fff; padding:.5rem;
+  box-shadow: 0 10px 0 rgba(0,0,0,.15);
+  border: 1px solid rgba(0,0,0,.05);
+  transform: rotate(-2.5deg);
+  transition: transform .3s;
+}
+.polaroid:hover{ transform: rotate(0); }
+.polaroid-shadow{
+  position:absolute; left:1.5rem; right:1.5rem; bottom:-1rem;
+  height:1rem; border-radius:9999px; background:rgba(0,0,0,.1); filter: blur(12px);
+}
+
+/* Progress bar (team) */
+#ft-progress { width: 0%; }
+
+/* Avatar button in team strip (created via JS) */
+.avatar-btn{
+  padding:2px;
+  border-radius: 0.75rem; /* xl */
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+.avatar-btn:hover{ box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.avatar-btn.active{ outline: 2px solid #f97316; /* orange-500 */ }
+/* Stato "solido" dell'header quando esce dall'hero */
+.header-solid{
+  background:#2B2723 !important;
+  color:#F9EBD0 !important;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 1px 8px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Everdale – Roadmap</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Capriola&display=swap" rel="stylesheet">
+  <!-- Paytone One (titoli), Capriola (body) -->
+  
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Typography override -->
+  <style>
+    :root{
+  --font-title: 'Paytone One', sans-serif;
+  --font-body: 'Capriola', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Tutto il body (default Capriola) */
+body{
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Header e nav restano Paytone One */
+header, header * {
+  font-family: var(--font-title) !important;
+}
+
+/* Titoli veri (h1-h6) restano Paytone One */
+:where(h1,h2,h3,h4,h5,h6,
+       .font-title,
+       .hero h1,
+       .section-title,
+       .card-title,
+       .nav-title,
+       .prose :where(h1,h2,h3,h4,h5,h6)){
+  font-family: var(--font-title) !important;
+}
+
+/* Testi normali e UI restano Capriola */
+:where(.prose p, .prose li, .prose blockquote,
+       .prose a, .prose code, .prose span, .prose small,
+       input, button, select, textarea, label, small){
+  font-family: var(--font-body) !important;
+}
+
+/* Scala contenuti Roadmap (-5%), ma non header né footer */
+main { font-size: 95%; }
+
+  </style>
+</head>
+
+<body class="min-h-screen bg-white text-slate-900">
+
+  <!-- ===== HEADER (uguale al tuo: sticky + blur + palette scura) ===== -->
+  <header class="sticky top-0 z-40 bg-[#2B2723] backdrop-blur border-b border-white/10">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-[#F9EBD0]">
+        <div class="h-9 w-9 grid place-items-center rounded-2xl border border-[#F9EBD0]/40">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 7l5 3 5-7 5 7 5-3v13H2z"/>
+          </svg>
+        </div>
+        <span class="font-extrabold tracking-tight text-lg">EVERDALE</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-[#F9EBD0]/90">
+        <a href="/#features" class="hover:opacity-80">Modalità</a>
+        <a href="/#welcome" class="hover:opacity-80">Welcome</a>
+        <a href="/news" class="hover:opacity-80">News</a>
+        <a href="/roadmap.html" class="hover:opacity-80 nav-active">Roadmap</a>
+      </nav>
+
+      <a href="#join" class="rounded-2xl bg-amber-600 text-white px-4 py-2 text-sm">Discord</a>
+    </div>
+  </header>
+
+  <main id="top" class="pt-0">
+    <!-- HERO Roadmap (palette scura come il tuo articolo/news) -->
+    <section id="roadmap-hero" class="relative overflow-hidden bg-[#2B2723] text-[#F9EBD0]">
+      <div class="mx-auto max-w-6xl px-4 py-14 md:py-20 text-center">
+        <span class="inline-flex items-center gap-2 rounded-2xl px-3 py-1 text-xs font-extrabold bg-amber-600 text-white shadow">
+          <i class="fi fi-rr-flag"></i> Roadmap pubblica
+        </span>
+        <h1 class="mt-5 text-4xl md:text-5xl font-extrabold tracking-tight">La nostra Roadmap</h1>
+        <p class="mt-3 text-[#DCCFB4]/90 max-w-2xl mx-auto">
+          Trasparenza sugli aggiornamenti: <strong>completato</strong>, <strong>in corso</strong>, <strong>pianificato</strong> e <strong>idee</strong>.
+        </p>
+        <p class="mt-1 text-xs text-[#DCCFB4]/70">Ultimo aggiornamento: 19 settembre 2025</p>
+
+        <div class="mt-8 flex items-center justify-center gap-3">
+          <a href="#timeline" class="inline-flex items-center gap-2 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white px-6 py-3 font-extrabold shadow-[0_4px_0_rgba(0,0,0,0.35)] ring-1 ring-black/10">
+            <i class="fi fi-rr-timeline"></i> Vai alla Timeline
+          </a>
+          <a href="/#roadmap" class="inline-flex items-center gap-2 rounded-2xl bg-white/10 hover:bg-white/20 text-[#F9EBD0] px-6 py-3 font-extrabold ring-1 ring-white/20">
+            <i class="fi fi-rr-arrow-left"></i> Torna al Sito
+          </a>
+        </div>
+      </div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white"></div>
+    </section>
+
+    <!-- FILTRI -->
+    <section class="border-b border-slate-200/70 bg-white">
+      <div class="mx-auto max-w-6xl px-4 py-6">
+        <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+          <!-- Tabs Stato -->
+          <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filtra per stato">
+            <button data-state="all" class="state-tab inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-3 py-2 text-sm font-semibold hover:border-slate-300">
+              <span class="h-2 w-2 rounded-full bg-slate-400"></span> Tutto
+            </button>
+            <button data-state="done" class="state-tab inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-3 py-2 text-sm font-semibold hover:border-slate-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Completato
+            </button>
+            <button data-state="doing" class="state-tab inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-3 py-2 text-sm font-semibold hover:border-slate-300">
+              <span class="h-2 w-2 rounded-full bg-amber-500"></span> In corso
+            </button>
+            <button data-state="planned" class="state-tab inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-3 py-2 text-sm font-semibold hover:border-slate-300">
+              <span class="h-2 w-2 rounded-full bg-sky-500"></span> Pianificato
+            </button>
+            <button data-state="idea" class="state-tab inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-3 py-2 text-sm font-semibold hover:border-slate-300">
+              <span class="h-2 w-2 rounded-full bg-slate-300"></span> Idea
+            </button>
+          </div>
+
+          <!-- Ricerca -->
+          <div class="md:ml-auto w-full md:w-80">
+            <label class="sr-only" for="search">Cerca nella roadmap</label>
+            <div class="relative">
+              <input id="search" type="search" placeholder="Cerca funzionalità, es. “pet”, “party”…"
+                     class="w-full rounded-2xl border border-slate-200 px-10 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-200" />
+              <i class="fi fi-rr-search absolute left-3 top-2.5 text-slate-400"></i>
+              <button id="clearSearch" class="hidden absolute right-2 top-2 rounded-xl px-2 py-1 text-xs bg-slate-100 hover:bg-slate-200">Pulisci</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROSSIMI RILASCI -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-6xl px-4 py-12">
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">Prossimi rilasci</h2>
+          <a href="#timeline" class="text-sm text-amber-700 hover:underline">Vai alla timeline →</a>
+        </div>
+        <p class="mt-2 text-slate-600">Una selezione di attività imminenti o in corso.</p>
+
+        <div id="upcomingGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Cards via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="bg-white">
+      <div class="mx-auto max-w-6xl px-4 py-12">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">Timeline trimestrale</h2>
+          <a href="#top" class="text-sm text-amber-700 hover:underline">↑ Torna su</a>
+        </div>
+        <p class="mt-2 text-slate-600">Organizzata per trimestre (Q3 2025, Q4 2025, Q1 2026…).</p>
+
+        <div id="timelineWrap" class="mt-8 space-y-10">
+          <!-- Sezioni trimestre via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA finale -->
+    <section class="bg-[#2B2723] text-[#F9EBD0]">
+      <div class="mx-auto max-w-6xl px-4 py-12 text-center">
+        <div class="inline-flex items-center gap-2 rounded-2xl px-3 py-1 text-xs text-[#DCCFB4] ring-1 ring-white/10">
+          <i class="fi fi-rr-info"></i> Le date possono cambiare in base alle priorità.
+        </div>
+        <h3 class="mt-4 text-2xl md:text-3xl font-extrabold tracking-tight">Hai un’idea o un feedback?</h3>
+        <p class="mt-2 text-[#DCCFB4]/90">Condividila nel nostro Discord: ci aiuta a dare priorità alle prossime feature.</p>
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <a href="https://discord.gg/tuo-invito" target="_blank"
+             class="inline-flex items-center gap-2 rounded-2xl bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 font-extrabold shadow-lg transition">
+            <i class="fi fi-brands-discord text-xl"></i>
+            <span class="font-extrabold tracking-tight text-lg font-title">JOIN OUR DISCORD</span>
+          </a>
+          <a href="/#roadmap" class="inline-flex items-center gap-2 rounded-2xl bg-white/10 hover:bg-white/20 text-[#F9EBD0] px-6 py-3 font-extrabold ring-1 ring-white/20">
+            <span class="font-extrabold tracking-tight text-lg font-title"><i class="fi fi-rr-arrow-left"></i> Torna al Sito</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (uguale al tuo) ===== -->
+  <footer class="bg-[#2B2723] text-[#F9EBD0]">
+    <div class="mx-auto max-w-6xl px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="images/pine_badge.png" alt="Logo" class="h-10 w-auto drop-shadow">
+        <div>
+          <div class="font-extrabold text-lg">everdale.it</div>
+          <div class="text-sm text-amber-400">Coming soon</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 text-2xl">
+        <a href="https://discord.gg/tuo-invito" class="hover:opacity-80 text-[#5865F2]"><i class="fi fi-brands-discord"></i></a>
+        <a href="#" class="hover:opacity-80 text-[#1DA1F2]"><i class="fi fi-brands-twitter"></i></a>
+        <a href="#" class="hover:opacity-80 text-[#000000]"><i class="fi fi-brands-tik-tok"></i></a>
+        <a href="#" class="hover:opacity-80 text-[#E1306C]"><i class="fi fi-brands-instagram"></i></a>
+        <a href="#" class="hover:opacity-80 text-[#FF0000]"><i class="fi fi-brands-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10"></div>
+
+    <div class="mx-auto max-w-6xl px-4 py-6 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-center md:text-left text-[#DCCFB4]/80">
+        © <span id="year"></span> EVERDALE. Tutti i diritti riservati.<br>
+        Non affiliato con Mojang AB.
+      </div>
+
+      <nav class="flex flex-wrap justify-center md:justify-end gap-5 font-semibold text-sm text-[#F9EBD0]">
+        <a href="/rules" class="hover:underline">Rules</a>
+        <a href="/terms" class="hover:underline">Terms</a>
+        <a href="/privacy" class="hover:underline">Privacy</a>
+        <a href="/credits" class="hover:underline">Credits</a>
+        <a href="/contact" class="hover:underline">Contact Us</a>
+        <a href="#top" class="flex items-center gap-1 hover:underline">
+          <i class="fi fi-sr-angle-up"></i> Top
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Template card -->
+  <template id="cardTpl">
+    <article class="rounded-2xl border border-slate-200 p-4 hover:shadow-sm transition-shadow bg-white">
+      <div class="flex items-center justify-between">
+        <h4 class="font-semibold"></h4>
+        <span class="status-badge inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold"></span>
+      </div>
+      <p class="mt-2 text-sm text-slate-600"></p>
+      <div class="mt-3 flex flex-wrap gap-2 tags"></div>
+      <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+        <span class="quarter"></span>
+        <span class="owner"></span>
+      </div>
+    </article>
+  </template>
+
+  <!-- Script: anno footer -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Script pagina Roadmap: dati + render + filtri -->
+  <script>
+    /** Stato possibile: 'done' | 'doing' | 'planned' | 'idea' */
+    const ROADMAP = [
+      { title: "Sistema Appartamenti – Beta", desc: "Affitta, arreda con furniture, invita amici e ospiti. Integrazione con economia e permessi.", tags: ["housing","furniture","economy"], state: "doing", quarter: "Q4 2025", owner: "Team Build & Scripting", highlight: true },
+      { title: "Sistema Party & Chat di gruppo", desc: "Creazione party, inviti rapidi, chat dedicata, mini-missioni cooperative.", tags: ["social","chat","party"], state: "planned", quarter: "Q4 2025", owner: "Team Social" },
+      { title: "Store in-game (GUI)", desc: "UI semplificata, preview cosmetici, conferma acquisto sicura.", tags: ["store","gui","ux"], state: "planned", quarter: "Q4 2025", owner: "Team UX" },
+      { title: "Pet System – Alpha", desc: "Compagni collezionabili con rarity, crescita e trick. Sblocco tramite eventi e pass stagionale.", tags: ["pet","progression","events"], state: "doing", quarter: "Q1 2026", owner: "Team Gameplay", highlight: true },
+      { title: "HUD personalizzabile", desc: "Widget minimappa, obiettivi, missioni giornaliere, toggle rapido effetti/particelle.", tags: ["hud","ui","accessibility"], state: "planned", quarter: "Q1 2026", owner: "Team UI" },
+      { title: "Bar & ricette (roleplay)", desc: "Ingredienti, mix, buff temporanei e missioni legate al locale community.", tags: ["roleplay","bar","crafting"], state: "idea", quarter: "Q2 2026", owner: "Game Design" },
+      { title: "Messaggistica diretta migliorata", desc: "Thread, menzioni, pin, filtri spam e inbox più pulita.", tags: ["chat","dm","moderation"], state: "done", quarter: "Q3 2025", owner: "Infra & Moderation" },
+      { title: "News Editor integrato", desc: "Pannello editor per pubblicare changelog e anteprime direttamente dal web.", tags: ["news","cms"], state: "done", quarter: "Q3 2025", owner: "Web Team" },
+      { title: "Furniture Pack – Wave 1", desc: "Set iniziale arredi: letti, sedie, tavoli, lampade, quadri. Compatibilità shader.", tags: ["furniture","assets"], state: "doing", quarter: "Q4 2025", owner: "Art & Tech" },
+      { title: "Onboarding & Tutorial", desc: "Percorso iniziale guidato: teletrasporto hub, badge, ricompense, missione introduttiva.", tags: ["onboarding","ux"], state: "planned", quarter: "Q4 2025", owner: "Team UX" }
+    ];
+
+    const stateMeta = {
+      done:    { label: "Completato",  cls: "bg-emerald-50 text-emerald-700 border border-emerald-200" },
+      doing:   { label: "In corso",    cls: "bg-amber-50 text-amber-700 border border-amber-200" },
+      planned: { label: "Pianificato", cls: "bg-sky-50 text-sky-700 border border-sky-200" },
+      idea:    { label: "Idea",        cls: "bg-slate-50 text-slate-700 border border-slate-200" }
+    };
+
+    const byQuarter = (a,b) => {
+      const [qa, ya] = a.quarter.split(" ");
+      const [qb, yb] = b.quarter.split(" ");
+      const qn = {Q1:1,Q2:2,Q3:3,Q4:4};
+      if (ya !== yb) return Number(ya) - Number(yb);
+      return qn[qa] - qn[qb];
+    };
+
+    let activeState = 'all';
+    let searchTerm  = '';
+
+    function makeCard(item) {
+      const tpl = document.getElementById('cardTpl').content.cloneNode(true);
+      tpl.querySelector('h4').textContent = item.title;
+      tpl.querySelector('p').textContent  = item.desc;
+      tpl.querySelector('.quarter').textContent = item.quarter;
+      tpl.querySelector('.owner').textContent   = item.owner;
+
+      const badge = tpl.querySelector('.status-badge');
+      const meta  = stateMeta[item.state];
+      badge.textContent = meta.label;
+      badge.className = `status-badge inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold ${meta.cls}`;
+
+      const tagsWrap = tpl.querySelector('.tags');
+      item.tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = "inline-flex items-center rounded-xl bg-slate-100 px-2 py-1 text-xs text-slate-700";
+        span.textContent = `#${t}`;
+        tagsWrap.appendChild(span);
+      });
+
+      if (item.highlight) tpl.querySelector('article').classList.add("border-amber-200");
+      return tpl;
+    }
+
+    function matchesFilters(item) {
+      const stateOk = (activeState === 'all') || (item.state === activeState);
+      const q = searchTerm.trim().toLowerCase();
+      if (!q) return stateOk;
+      const hay = `${item.title} ${item.desc} ${item.tags.join(" ")} ${item.owner}`.toLowerCase();
+      return stateOk && hay.includes(q);
+    }
+
+    function renderUpcoming() {
+      const grid = document.getElementById('upcomingGrid');
+      grid.innerHTML = '';
+      const filtered = ROADMAP
+        .filter(f => ['doing','planned'].includes(f.state))
+        .filter(matchesFilters)
+        .sort(byQuarter)
+        .slice(0, 6);
+      filtered.forEach(item => grid.appendChild(makeCard(item)));
+      if (!grid.children.length) {
+        grid.innerHTML = `<div class="col-span-full text-slate-500 text-sm">Nessun risultato con i filtri correnti.</div>`;
+      }
+    }
+
+    function renderTimeline() {
+      const wrap = document.getElementById('timelineWrap');
+      wrap.innerHTML = '';
+      const quarters = [...new Set(ROADMAP.sort(byQuarter).map(i => i.quarter))];
+      quarters.forEach(q => {
+        const section = document.createElement('section');
+        section.innerHTML = `
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-3 w-3 rounded-full bg-amber-500"></div>
+            <div class="flex-1">
+              <h3 class="text-xl font-extrabold text-slate-900">${q}</h3>
+              <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-5" data-quarter="${q}"></div>
+            </div>
+          </div>
+        `;
+        const grid = section.querySelector('[data-quarter]');
+        ROADMAP.filter(i => i.quarter === q).filter(matchesFilters).forEach(item => grid.appendChild(makeCard(item)));
+        if (!grid.children.length) return;
+        wrap.appendChild(section);
+      });
+      if (!wrap.children.length) {
+        wrap.innerHTML = `<div class="text-slate-500 text-sm">Nessun elemento nella timeline con i filtri correnti.</div>`;
+      }
+    }
+
+    function updateTabsUI() {
+      document.querySelectorAll('.state-tab').forEach(b => {
+        const on = (b.dataset.state === activeState);
+        b.classList.toggle('bg-slate-900', on);
+        b.classList.toggle('text-white', on);
+        if (!on) b.classList.remove('bg-slate-900','text-white');
+      });
+    }
+    function updateClearBtn() {
+      const clearBtn = document.getElementById('clearSearch');
+      if (searchTerm.trim()) clearBtn.classList.remove('hidden'); else clearBtn.classList.add('hidden');
+    }
+    function renderAll(){ renderUpcoming(); renderTimeline(); updateTabsUI(); updateClearBtn(); }
+
+    // Eventi filtri
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.state-tab').forEach(btn => {
+        btn.addEventListener('click', () => { activeState = btn.dataset.state; renderAll(); pushHash(); });
+      });
+      const searchEl = document.getElementById('search');
+      const clearBtn = document.getElementById('clearSearch');
+      searchEl.addEventListener('input', (e) => { searchTerm = e.target.value; renderAll(); pushHash(); });
+      clearBtn.addEventListener('click', () => { searchEl.value=''; searchTerm=''; renderAll(); pushHash(); });
+
+      // Deep link da hash
+      loadFromHash();
+      renderAll();
+    });
+
+    // Hash helpers
+    function loadFromHash() {
+      const params = new URLSearchParams(location.hash.replace('#',''));
+      const s = params.get('state'); const q = params.get('q');
+      if (s) activeState = s;
+      if (q) { searchTerm = q; const searchEl = document.getElementById('search'); if (searchEl) searchEl.value = q; }
+    }
+    function pushHash() {
+      const p = new URLSearchParams();
+      if (activeState !== 'all') p.set('state', activeState);
+      if (searchTerm.trim()) p.set('q', searchTerm.trim());
+      const h = p.toString();
+      history.replaceState(null, '', h ? `#${h}` : location.pathname);
+    }
+  </script>
+</body>
+</html>
